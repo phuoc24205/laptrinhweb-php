@@ -1,58 +1,70 @@
 @extends('dashboard')
 
 @section('content')
-    <main class="signup-form">
-        <div class="cotainer">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card">
-                        <h3 class="card-header text-center">Create User</h3>
-                        <div class="card-body">
-                            <form action="{{ route('user.postUser') }}" method="POST">
-                                @csrf
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Name" id="name" class="form-control" name="name"
-                                           required autofocus>
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="phone" id="phone" class="form-control" name="phone"
-                                           required autofocus>
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="address" id="address" class="form-control" name="address"
-                                           required autofocus>
-                                    @if ($errors->has('address'))
-                                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Email" id="email_address" class="form-control"
-                                           name="email" required autofocus>
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="password" placeholder="Password" id="password" class="form-control"
-                                           name="password" required>
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
-                                </div>
-                                <div class="d-grid mx-auto">
-                                    <button type="submit" class="btn btn-dark btn-block">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<main class="form-login mb-5">
+    <form class="w-full" action="{{ route('user.createUser') }}" method="POST">
+        @csrf
+        <h4 class="text-center">Màn hình đăng ký</h4>
+
+        <!-- Username Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="name" class="form-label">Username</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            @if ($errors->has('name'))
+            <span class="text-danger">{{ $errors->first('name') }}</span>
+            @endif
         </div>
-    </main>
+
+        <!-- Phone Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+            @if ($errors->has('phone'))
+            <span class="text-danger">{{ $errors->first('phone') }}</span>
+            @endif
+        </div>
+
+        <!-- Address Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
+            @if ($errors->has('address'))
+            <span class="text-danger">{{ $errors->first('address') }}</span>
+            @endif
+        </div>
+
+        <!-- Email Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+            @if ($errors->has('email'))
+            <span class="text-danger">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+
+        <!-- Password Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            @if ($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+            @endif
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+            @if ($errors->has('password_confirmation'))
+            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+            @endif
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-button mt-5">
+            <button type="button" class="btn text-primary">Đã có tài khoản</button>
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
+        </div>
+    </form>
+</main>
 @endsection
