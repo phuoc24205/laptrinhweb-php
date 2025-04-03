@@ -57,6 +57,8 @@ class CrudUserController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'like' => 'required',
+            'facebook' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'email' => 'required|email|unique:users',
@@ -66,7 +68,8 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
-
+            'like' => 'required',
+            'facebook' => 'required',
             'phone' => $data['phone'],
             'address' => $data['address'],
             'email' => $data['email'],
@@ -119,7 +122,8 @@ class CrudUserController extends Controller
 
         $request->validate([
             'name' => 'required',
-
+            'like' => 'required',
+            'facebook' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'email' => 'required|email|unique:users,id,' . $input['id'],
@@ -128,7 +132,8 @@ class CrudUserController extends Controller
 
         $user = User::find($input['id']);
         $user->name = $input['name'];
-
+        $user->like = $input['like'];
+        $user->facebook = $input['facebook'];
         $user->phone = $input['phone'];
         $user->address = $input['address'];
         $user->email = $input['email'];

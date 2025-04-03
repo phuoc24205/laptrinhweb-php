@@ -14,6 +14,20 @@
             <span class="text-danger">{{ $errors->first('name') }}</span>
             @endif
         </div>
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="like" class="form-label">Like</label>
+            <input type="text" class="form-control" id="like" name="like" value="{{ old('like') }}" required>
+            @if ($errors->has('like'))
+            <span class="text-danger">{{ $errors->first('like') }}</span>
+            @endif
+        </div>
+        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
+            <label for="facebook" class="form-label">Facebook</label>
+            <input type="text" class="form-control" id="facebook" name="facebook" value="{{ old('facebook') }}" required>
+            @if ($errors->has('facebook'))
+            <span class="text-danger">{{ $errors->first('facebook') }}</span>
+            @endif
+        </div>
 
         <!-- Phone Input -->
         <div class="mt-3 d-flex align-items-center justify-content-between gap-3">

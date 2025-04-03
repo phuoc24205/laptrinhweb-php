@@ -16,7 +16,24 @@
                 @endif
             </div>
         </div>
-
+        <div class="mb-3 row">
+            <label for="like" class="col-sm-4 col-form-label">Like</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="like" name="like" value="{{ $user->like }}" required>
+                @if ($errors->has('like'))
+                <span class="text-danger">{{ $errors->first('like') }}</span>
+                @endif
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="facebook" class="col-sm-4 col-form-label">Facebook</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="facebook" name="facebook" value="{{ $user->facebook }}" required>
+                @if ($errors->has('facebook'))
+                <span class="text-danger">{{ $errors->first('facebook') }}</span>
+                @endif
+            </div>
+        </div>
         <div class="mb-3 row">
             <label for="phone" class="col-sm-4 col-form-label">Phone</label>
             <div class="col-sm-8">
