@@ -10,6 +10,9 @@
                 <th>Phone</th>
                 <th>Address</th>
                 <th>Email</th>
+                <th>Like</th>
+                <th>Facebook</th>
+                <th>Avatar</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -22,6 +25,11 @@
                 <th>{{ $user->phone }}</th>
                 <th>{{ $user->address }}</th>
                 <th>{{ $user->email }}</th>
+                <th>{{ $user->like }}</th>
+                <th>{{ $user->facebook }}</th>
+                <th>
+                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="">
+                </th>
                 <th class="action-links">
                     <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |
                     <a href="{{ route('user.updateUser', ['id' => $user->id]) }}">Edit</a> |

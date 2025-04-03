@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="form-login mb-5">
-    <form class="w-full" action="{{ route('user.createUser') }}" method="POST">
+    <form enctype="multipart/form-data" class="w-full" action="{{ route('user.createUser') }}" method="POST">
         @csrf
         <h4 class="text-center">Màn hình đăng ký</h4>
 
@@ -13,6 +13,10 @@
             @if ($errors->has('name'))
             <span class="text-danger">{{ $errors->first('name') }}</span>
             @endif
+        </div>
+        <div class="mt-3 d-flex align-items-center gap-3">
+            <label for="avatar">Chọn Avatar:</label>
+            <input type="file" name="avatar" accept="image/*" required>
         </div>
         <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
             <label for="like" class="form-label">Like</label>

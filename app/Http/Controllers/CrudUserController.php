@@ -57,6 +57,7 @@ class CrudUserController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'like' => 'required',
             'facebook' => 'required',
             'phone' => 'required',
@@ -64,11 +65,12 @@ class CrudUserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-
+        $avatarPath = $request->file('avatar')->store('avatars', 'public');
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
             'like' => $data['like'],
+            'avatar' => $avatarPath,
             'facebook' => $data['facebook'],
             'phone' => $data['phone'],
             'address' => $data['address'],
@@ -123,6 +125,7 @@ class CrudUserController extends Controller
         $request->validate([
             'name' => 'required',
             'like' => 'required',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'facebook' => 'required',
             'phone' => 'required',
             'address' => 'required',
@@ -131,6 +134,9 @@ class CrudUserController extends Controller
         ]);
 
         $user = User::find($input['id']);
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $request->file('avatar')->store('avatars', 'public');
+        }
         $user->name = $input['name'];
         $user->like = $input['like'];
         $user->facebook = $input['facebook'];

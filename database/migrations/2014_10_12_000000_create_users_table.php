@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('like');
             $table->string('facebook');
+            $table->string('avatar');
             $table->string('phone');
             $table->string('address');
             $table->string('email')->unique();

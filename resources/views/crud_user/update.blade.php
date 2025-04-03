@@ -1,8 +1,8 @@
 @extends('dashboard')
 
 @section('content')
-<main class="form-login mb-5 w-full">
-    <form class="w-full" method="POST" action="{{ route('user.postUpdateUser') }}">
+<main class="form-login mb-5 w-full px-5">
+    <form class="w-full" enctype="multipart/form-data" method="POST" action="{{ route('user.postUpdateUser') }}">
         @csrf
         <input name="id" type="hidden" value="{{ $user->id }}">
         <h4 class="text-center mb-4">Màn hình cập nhật</h4>
@@ -15,6 +15,11 @@
                 <span class="text-danger">{{ $errors->first('name') }}</span>
                 @endif
             </div>
+        </div>
+        <div class="mt-3 d-flex align-items-center gap-3">
+            <label for="avatar">Chọn Avatar:</label>
+            <input type="file" name="avatar" accept="image/*" required>
+            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Avatar" width="100">
         </div>
         <div class="mb-3 row">
             <label for="like" class="col-sm-4 col-form-label">Like</label>

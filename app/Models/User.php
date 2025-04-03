@@ -28,6 +28,7 @@ class User extends Authenticatable
         'name',
         'like',
         'facebook',
+        'avatar',
         'phone',
         'male',
         'address',
