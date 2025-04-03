@@ -5,11 +5,15 @@
     margin: 0;
 }
 a {
-    text-decoration: none;
-    color: black;
+    text-decoration: none !important;
+    color: black !important;
 }
-ul, p {
-    margin: 0;
+ul,
+p {
+    margin: 0 !important;
+}
+ul {
+    margin: 0 !important;
 }
 .header {
     margin-top: 20px;
@@ -53,11 +57,12 @@ ul, p {
     padding: 10px 0;
     margin-bottom: 10px;
 }
-.list-user table td, th {
+.list-user table td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
+}
 .list-user {
     margin: 80px auto;
     display: flex;

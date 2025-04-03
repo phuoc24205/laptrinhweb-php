@@ -14,20 +14,6 @@
             <span class="text-danger">{{ $errors->first('name') }}</span>
             @endif
         </div>
-        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
-            <label for="feld1" class="form-label">feld1</label>
-            <input type="text" class="form-control" id="feld1" name="feld1" value="{{ old('feld1') }}" required>
-            @if ($errors->has('feld1'))
-            <span class="text-danger">{{ $errors->first('feld1') }}</span>
-            @endif
-        </div>
-        <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
-            <label for="feld2" class="form-label">feld2</label>
-            <input type="text" class="form-control" id="feld2" name="feld2" value="{{ old('feld2') }}" required>
-            @if ($errors->has('feld2'))
-            <span class="text-danger">{{ $errors->first('feld2') }}</span>
-            @endif
-        </div>
 
         <!-- Phone Input -->
         <div class="mt-3 d-flex align-items-center justify-content-between gap-3">
