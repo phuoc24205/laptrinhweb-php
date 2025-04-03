@@ -15,10 +15,10 @@
                     <a href="">Home</a>
                 </li>
                 <li class="header-list__item">
-                    <a href="">Đăng nhập</a>
+                    <a href="{{ route('user.authUser') }}">Đăng nhập</a>
                 </li>
                 <li class="header-list__item">
-                    <a href="">Đăng ký</a>
+                    <a href="{{ route('user.createUser') }}">Đăng ký</a>
                 </li>
             </ul>
         </div>
