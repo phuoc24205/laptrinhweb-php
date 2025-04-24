@@ -13,12 +13,12 @@
                 <th>Like</th>
                 <th>Facebook</th>
                 <th>Avatar</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                @foreach($users as $user)
+            @foreach($users as $user)
             <tr>
                 <th>{{ $user->id }}</th>
                 <th>{{ $user->name }}</th>
@@ -28,7 +28,20 @@
                 <th>{{ $user->like }}</th>
                 <th>{{ $user->facebook }}</th>
                 <th>
-                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="">
+                    @if($user->avatar)
+                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" width="50">
+                    @else
+                    No image
+                    @endif
+                </th>
+                <th>
+                    {{-- Danh sách role với link --}}
+                    @foreach($user->roles as $role)
+                    <a href="/read-role?id={{ $role->id }}" class="badge bg-info text-white" style="text-decoration: none;">
+                        {{ $role->name }}
+                    </a>
+
+                    @endforeach
                 </th>
                 <th class="action-links">
                     <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |
@@ -37,8 +50,9 @@
                 </th>
             </tr>
             @endforeach
-            </tr>
+
         </tbody>
     </table>
 </main>
+{{ $users->links('pagination::bootstrap-5') }}
 @endsection
